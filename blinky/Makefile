@@ -66,4 +66,4 @@ clean:
 	rm -f *.o $(TARGET).elf $(TARGET).hex $(TARGET).bin
 
 flash: 
-	st-flash write $(TARGET).bin 0x8000000
+	$(SF) write $(TARGET).bin 0x8000000
