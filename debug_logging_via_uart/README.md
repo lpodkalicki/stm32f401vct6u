@@ -1,11 +1,10 @@
+# Debug logging via UART
+
 ## Board
 STM32f401C-DISCO
 
 ## MCU
 STM32F401VCT6
-
-## Project
-Debug loggin via UART
 
 ## Configuration
 ### DEBUG
@@ -14,7 +13,6 @@ Debug loggin via UART
   * USART6_RX -> PC7 (unused) 
 
 ## Compiling and Burning (arm-none-eabi toolchain)
-
 ```
 $ make && make flash
 ```
