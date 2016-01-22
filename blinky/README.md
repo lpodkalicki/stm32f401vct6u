@@ -1,8 +1,12 @@
-# Board
+# Blinky
+## Board
 STM32f401C-DISCO
 
-# MCU
+## MCU
 STM32F401VCT6
 
-# Project
-Blinky
+## Compiling and Burning (arm-none-eabi toolchain)
+```
+$ make && make flash
+```
+
