@@ -1,0 +1,8 @@
+# Board
+STM32f401C-DISCO
+
+# MCU
+STM32F401VCT6
+
+# Project
+Blinky
