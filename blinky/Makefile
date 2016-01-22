@@ -35,7 +35,6 @@ CFLAGS += -mlittle-endian -mthumb -mthumb-interwork -mcpu=cortex-m4
 CFLAGS += -fsingle-precision-constant -Wdouble-promotion
 CFLAGS += -mfpu=fpv4-sp-d16 -mfloat-abi=hard
 CFLAGS += -DUSE_STDPERIPH_DRIVER -DSTM32F401xC
-CFLAGS += -DDEBUG
 
 ###################################################
 
