@@ -1,3 +1,5 @@
+# Kdevelop
+*.kdev4
 # Object files
 *.o
 *.ko
