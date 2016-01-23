@@ -7,10 +7,9 @@ I have test this example with SDIO interface. I used 8GB cards in FAT32 format. 
  * Write protect is OFF
  * Debug logging via UART is ON
  * LEDs status
-  * RED led on - could not mount filesystem
-  * ORANGE led on - mount ok, but coud't open file (maybe you have enabled Write protect pin. Disable it for this example);
-  * BLUE led on - mount ok, could open file and write some data
-  * GREEN blinking - just blinking GREEN led.
+  * RED led on - could not init driver or could not mount filesystem
+  * ORANGE led on - mount ok, but coud't open file or write to file (maybe you have enabled Write protect pin. Disable it for this example);
+  * GREEN led on - mount ok and test ok - could open file and write some data
 
 ## Board
 STM32f401C-DISCO
