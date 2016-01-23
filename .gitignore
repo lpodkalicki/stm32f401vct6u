@@ -1,5 +1,6 @@
 # Kdevelop
 *.kdev4
+.kdev_include_paths
 
 # Object files
 *.o
