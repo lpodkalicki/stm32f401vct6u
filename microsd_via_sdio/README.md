@@ -1,4 +1,4 @@
-# Debug logging via UART
+# uSD (microsd) via SDIO interface
 
 I have test this example with SDIO interface. I used 8GB cards in FAT32 format. In this example, default settings are in use, so:
 
@@ -36,10 +36,17 @@ STM32Cube_FW_F4_V1.9.0
   * USART6_RX -> PC7 (unused) 
 
 ### uSD
- * SDIO (4bits):
-  * 
- 
-
+ * SDIO (4-bit):
+  * 1. CD/DAT3 -> PC11
+  * 2. CMD -> PD2 
+  * 3. VSS1 -> GND 	
+  * 4. VDD  -> 3.3V
+  * 5. CLK -> PC12 	
+  * 6. VSS2 -> GND
+  * 7. DAT0 -> PC8
+  * 8. DAT1 -> PC9
+  * 9. DAT2 -> PC10  	
+  
 
 ## Compiling and Burning (arm-none-eabi toolchain)
 ```
