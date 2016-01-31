@@ -9,10 +9,11 @@
 
 #define	LED_NUM			(4)
 #define	LED_GPIO_PORT		GPIOD
-#define	LED1_PIN		GPIO_PIN_12
-#define	LED2_PIN		GPIO_PIN_13
-#define	LED3_PIN		GPIO_PIN_14
-#define	LED4_PIN		GPIO_PIN_15
+#define	LED_GPIO_PIN1		GPIO_PIN_12
+#define	LED_GPIO_PIN2		GPIO_PIN_13
+#define	LED_GPIO_PIN3		GPIO_PIN_14
+#define	LED_GPIO_PIN4		GPIO_PIN_15
+#define	LED_GPIO_CLK_ENABLE()	__HAL_RCC_GPIOD_CLK_ENABLE()
 
 typedef enum {
 	LED1, // Green

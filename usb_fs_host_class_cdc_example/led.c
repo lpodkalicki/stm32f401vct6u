@@ -6,31 +6,31 @@
 #include "led.h"
 
 const uint16_t led_gpio_pins[LED_NUM] = {
-	LED1_PIN,
-	LED2_PIN,
-	LED3_PIN,
-	LED4_PIN
+	LED_GPIO_PIN1,
+	LED_GPIO_PIN2,
+	LED_GPIO_PIN2,
+	LED_GPIO_PIN3
 };
 
 void
 led_on(led_t led)
 {
 
-	HAL_GPIO_WritePin(GPIOD, led_gpio_pins[led], GPIO_PIN_SET);
+	HAL_GPIO_WritePin(LED_GPIO_PORT, led_gpio_pins[led], GPIO_PIN_SET);
 }
 
 void
 led_off(led_t led)
 {
 
-	HAL_GPIO_WritePin(GPIOD, led_gpio_pins[led], GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LED_GPIO_PORT, led_gpio_pins[led], GPIO_PIN_RESET);
 }
 
 void
 led_toggle(led_t led)
 {
 
-	HAL_GPIO_TogglePin(GPIOD, led_gpio_pins[led]);
+	HAL_GPIO_TogglePin(LED_GPIO_PORT, led_gpio_pins[led]);
 }
 
 void

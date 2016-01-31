@@ -5,6 +5,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_hal.h"
 #include "config.h"
+#include "led.h"
 
 extern void error_handler(void);
 UART_HandleTypeDef UART_DBG_Handle;
@@ -19,8 +20,8 @@ SystemClock_Config(void)
 	/* Enable Power Control clock */
 	__PWR_CLK_ENABLE();
 
-	/* The voltage scaling allows optimizing the power consumption when the device is 
-	clocked below the maximum system frequency, to update the voltage scaling value 
+	/* The voltage scaling allows optimizing the power consumption when the device is
+	clocked below the maximum system frequency, to update the voltage scaling value
 	regarding system frequency refer to product datasheet.  */
 	__HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
 
@@ -34,18 +35,18 @@ SystemClock_Config(void)
 	RCC_OscInitStruct.PLL.PLLN = 336;
 	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
 	RCC_OscInitStruct.PLL.PLLQ = 7;
-	if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
+	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
 		error_handler();
 	}
 
-	/* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 
+	/* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
 	clocks dividers */
 	RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
 	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
 	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;  
-	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;  
-	if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) {
+	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK) {
 		error_handler();
 	}
 }
@@ -54,9 +55,9 @@ void
 RCC_Config(void)
 {
 	/* -- Enable GPIO clock for LED pins -- */
-        __HAL_RCC_GPIOD_CLK_ENABLE();
-        
-        /* -- Enable GPIO clocks for USART/DEBUG -- */ 
+	LED_GPIO_CLK_ENABLE();
+
+        /* -- Enable GPIO clocks for USART/DEBUG -- */
         USART_DBG_RX_GPIO_CLK_ENABLE();
         USART_DBG_TX_GPIO_CLK_ENABLE();
         USART_DBG_CLK_ENABLE();
@@ -67,13 +68,13 @@ GPIO_Config(void)
 {
 
 	GPIO_InitTypeDef GPIO_InitStruct;
-	
+
 	/* -- Configure the GPIO of LED pins -- */
-	GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15;
+	GPIO_InitStruct.Pin = LED_GPIO_PIN1|LED_GPIO_PIN2|LED_GPIO_PIN3|LED_GPIO_PIN4;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
-	HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+	HAL_GPIO_Init(LED_GPIO_PORT, &GPIO_InitStruct);
 
 	/* -- Configure the GPIO pins for USART/DEBUG -- */
         GPIO_InitStruct.Pin = USART_DBG_TX_PIN;
@@ -91,7 +92,7 @@ void
 USART_Config(void)
 {
 
-        /* -- Configure USART/DEBUG interface -- */ 
+        /* -- Configure USART/DEBUG interface -- */
         UART_DBG_Handle.Instance = USART_DBG;
         UART_DBG_Handle.Init.BaudRate = 115200;
         UART_DBG_Handle.Init.WordLength = UART_WORDLENGTH_8B;

@@ -50,8 +50,7 @@ SRCS =  main.c \
 	syscalls.c \
 	config.c \
 	led.c \
-	log.c \
-	usbh_conf.c
+	log.c
 	
 SRCS += stm32f4xx_hal.c \
 	stm32f4xx_hal_rcc.c \
@@ -63,7 +62,8 @@ SRCS += stm32f4xx_hal.c \
 	stm32f4xx_hal_hcd.c \
 	stm32f4xx_ll_usb.c
 
-SRCS += usbh_core.c \
+SRCS += usbh_conf.c \
+	usbh_core.c \
 	usbh_ctlreq.c \
 	usbh_ioreq.c \
 	usbh_pipes.c \
