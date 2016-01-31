@@ -1,13 +1,13 @@
 # Example of USB FS Host Class CDC
 
-Little overview of what I did:
- * USB OTG interface is used
+Project overview:
+ * USB OTG interface acting as a Host Class CDC
  * Debug logging via UART is ON
  * LEDs status
   * RED led on - USB unrecovered error occured (strange thing)
   * ORANGE led on - waiting for USB stack checking, enumrating, etc.
   * GREEN led on - USB is ready!
-  * Blinking BLUE - sending and receving byte of data from connected USB Device class CDC (virtual COM-port)
+  * Blinking BLUE - sending and receivng byte of data from connected USB Device class CDC (virtual COM-port)
 
 ## Board
 STM32f401C-DISCO
@@ -36,3 +36,4 @@ STM32Cube_FW_F4_V1.9.0
 ```
 $ make && make flash
 ```
+
