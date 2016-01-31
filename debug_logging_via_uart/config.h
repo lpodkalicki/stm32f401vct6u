@@ -2,8 +2,8 @@
  * Copyright (c) 2015, Lukasz Marcin Podkalicki <lpodkalicki@gmail.com>
  */
 
-#ifndef _EXAMPLE_CONFIG_H_
-#define _EXAMPLE_CONFIG_H_
+#ifndef _PROJECT_CONFIG_H_
+#define _PROJECT_CONFIG_H_
 
 #include "stm32f4xx_hal_uart.h"
 

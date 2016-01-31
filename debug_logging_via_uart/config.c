@@ -4,9 +4,6 @@
 
 #include "stm32f4xx.h"
 #include "stm32f4xx_hal.h"
-#include "stm32f4xx_hal_conf.h"
-#include "stm32f4xx_hal_rcc.h"
-#include "stm32f4xx_hal_uart.h"
 #include "config.h"
 
 extern void error_handler(void);
