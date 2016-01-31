@@ -8,8 +8,8 @@
 const uint16_t led_gpio_pins[LED_NUM] = {
 	LED_GPIO_PIN1,
 	LED_GPIO_PIN2,
-	LED_GPIO_PIN2,
-	LED_GPIO_PIN3
+	LED_GPIO_PIN3,
+	LED_GPIO_PIN4
 };
 
 void
