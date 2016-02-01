@@ -1,13 +1,13 @@
-# Example of USB FS Host Class CDC
+# Example of USB FS Host Class HID (Keyboard and Mouse)
 
 Project overview:
- * USB is configured as Host Class CDC
+ * USB is configured as a Host Class HID
  * Debug logging via UART is ON
  * LEDs status
   * RED led on - USB unrecovered error occured (strange thing)
   * ORANGE led on - waiting for USB stack checking, enumrating, etc.
   * GREEN led on - USB is ready!
-  * Blinking BLUE - sending and receivng byte of data from connected USB Device class CDC (virtual COM-port)
+  * Blinking BLUE - when receivng data from connected USB Device class HID (Keyboard or Mause)
 
 ## Board
 STM32f401C-DISCO
