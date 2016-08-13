@@ -202,7 +202,7 @@ uint8_t BSP_SD_ITConfig(void)
   HAL_GPIO_Init(SD_DETECT_GPIO_PORT, &GPIO_Init_Structure);
     
   /* NVIC configuration for SDIO interrupts */
-  HAL_NVIC_SetPriority(SD_DETECT_IRQn, 5, 0);
+  HAL_NVIC_SetPriority(SD_DETECT_IRQn, 3, 0);
   HAL_NVIC_EnableIRQ(SD_DETECT_IRQn);
   
   return 0;

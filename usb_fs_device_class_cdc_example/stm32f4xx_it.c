@@ -41,8 +41,8 @@
 
 #include "stm32f4xx_it.h"
 #include "stm32f4xx_hal.h"
-#include "stm32f4xx_sd.h"
-#include "log.h"
+
+extern PCD_HandleTypeDef hpcd;
 
 /** @addtogroup STM32F4xx_HAL_Examples
   * @{
@@ -167,18 +167,38 @@ void SysTick_Handler(void)
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32f4xx.s).                                               */
 /******************************************************************************/
-
-void SDIO_IRQHandler(void)
+/**
+  * @brief  This function handles External line 0 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void EXTI0_IRQHandler(void)
 {
-  BSP_SD_IRQHandler();
+	
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
 }
 
-void EXTI15_10_IRQHandle(void)
+/**
+  * @brief  This function handles External line 1 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void EXTI1_IRQHandler(void)
 {
-
-	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
+	
+	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
 }
 
 
+/**
+  * @brief  This function handles USB-On-The-Go FS global interrupt request.
+  * @param  None
+  * @retval None
+  */
+void OTG_FS_IRQHandler(void)
+{
+
+	HAL_PCD_IRQHandler(&hpcd);
+}
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

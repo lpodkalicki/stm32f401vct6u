@@ -13,17 +13,17 @@ int
 main(void)
 {
 	uint32_t cnt = 0;
-	HAL_Init();	
+	HAL_Init();
         SystemClock_Config();
-        RCC_Config();        
+        RCC_Config();
         GPIO_Config();
 	USART_Config();
 
         if (SysTick_Config(SystemCoreClock / 1000)) {
                 error_handler();
         }
-        
-        log_init(LOGLEVEL_INFO);        
+
+        log_init(LOGLEVEL_INFO);
         log_info("PROJECT STERTED");
 
         while (1) {

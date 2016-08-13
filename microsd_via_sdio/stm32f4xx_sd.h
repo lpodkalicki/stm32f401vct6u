@@ -79,7 +79,7 @@
 /** @defgroup STM324xG_EVAL_SD_Exported_Constants
   * @{
   */ 
-#define SD_DETECT_PIN                    GPIO_PIN_8
+#define SD_DETECT_PIN                    GPIO_PIN_15
 #define SD_DETECT_GPIO_PORT              GPIOA
 #define __SD_DETECT_GPIO_CLK_ENABLE()    __GPIOA_CLK_ENABLE()
 #define SD_DETECT_IRQn                   EXTI15_10_IRQn
@@ -99,7 +99,7 @@
 #define SD_DMAx_Rx_IRQn                   DMA2_Stream3_IRQn
 #define SD_DMAx_Tx_IRQHandler             DMA2_Stream6_IRQHandler
 #define SD_DMAx_Rx_IRQHandler             DMA2_Stream3_IRQHandler
-#define SD_DetectIRQHandler()             HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8)
+#define SD_DetectIRQHandler()             HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15)
 
 /**
   * @}

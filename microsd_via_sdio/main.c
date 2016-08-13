@@ -42,6 +42,19 @@ test(const char *filename, const char *content)
 	return (0);
 }
 
+void
+BSP_SD_DetectCallback(void)
+{
+	log_info("Detected!");
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	//if (GPIO_Pin == GPIO_PIN_13) {
+		log_info("HAOAH!");
+	//}
+}
+
 int
 main(void)
 {
@@ -51,14 +64,17 @@ main(void)
         RCC_Config();
         GPIO_Config();
 	USART_Config();
+	BSP_SD_ITConfig();
 
         if (SysTick_Config(SystemCoreClock / 1000)) {
                 error_handler();
         }
 
         log_init(LOGLEVEL_INFO);
-        log_info("PROJECT STERTED");	
+        log_info("PROJECT STERTED");
 
+	//log_info("detected=%d", BSP_SD_IsDetected());
+	log_info("detected=%d", HAL_GPIO_ReadPin(SD_DETECT_GPIO_PORT, SD_DETECT_PIN));
 	if (FATFS_LinkDriver(&SD_Driver, path) == 0) {
                 /* Mount drive */
 		if (f_mount(&fs, (TCHAR const*)"", 1) == FR_OK) {                        
@@ -74,5 +90,9 @@ main(void)
 		led_on(LED_RED);
 	}
 
-        while (1); // hang on endless loop
+        while (1) { // hang on endless loop
+		//HAL_Delay(1000);
+		//log_info("detected=%d", HAL_GPIO_ReadPin(SD_DETECT_GPIO_PORT, SD_DETECT_PIN));
+		//led_toggle(LED_BLUE);
+	}
 }
